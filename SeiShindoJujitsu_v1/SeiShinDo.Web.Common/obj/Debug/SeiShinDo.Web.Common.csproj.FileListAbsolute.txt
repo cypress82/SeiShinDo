@@ -1,0 +1,5 @@
+D:\Development\OCG\SeiShinDo\SeiShindoJujitsu_v1\SeiShinDo.Web.Common\bin\Debug\SeiShinDo.Web.Common.dll
+D:\Development\OCG\SeiShinDo\SeiShindoJujitsu_v1\SeiShinDo.Web.Common\bin\Debug\SeiShinDo.Web.Common.pdb
+D:\Development\OCG\SeiShinDo\SeiShindoJujitsu_v1\SeiShinDo.Web.Common\obj\Debug\ResolveAssemblyReference.cache
+D:\Development\OCG\SeiShinDo\SeiShindoJujitsu_v1\SeiShinDo.Web.Common\obj\Debug\SeiShinDo.Web.Common.dll
+D:\Development\OCG\SeiShinDo\SeiShindoJujitsu_v1\SeiShinDo.Web.Common\obj\Debug\SeiShinDo.Web.Common.pdb
