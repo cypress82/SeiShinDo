@@ -1,0 +1,8 @@
+D:\Development\OCG\SeiShindoJujitsu_v1\SeiShindoJujitsu_v1.Tests\bin\Debug\SeiShindoJujitsu_v1.Tests.dll.config
+D:\Development\OCG\SeiShindoJujitsu_v1\SeiShindoJujitsu_v1.Tests\bin\Debug\SeiShindoJujitsu_v1.Tests.dll
+D:\Development\OCG\SeiShindoJujitsu_v1\SeiShindoJujitsu_v1.Tests\bin\Debug\SeiShindoJujitsu_v1.Tests.pdb
+D:\Development\OCG\SeiShindoJujitsu_v1\SeiShindoJujitsu_v1.Tests\bin\Debug\SeiShindoJujitsu_v1.dll
+D:\Development\OCG\SeiShindoJujitsu_v1\SeiShindoJujitsu_v1.Tests\bin\Debug\SeiShindoJujitsu_v1.pdb
+D:\Development\OCG\SeiShindoJujitsu_v1\SeiShindoJujitsu_v1.Tests\obj\Debug\ResolveAssemblyReference.cache
+D:\Development\OCG\SeiShindoJujitsu_v1\SeiShindoJujitsu_v1.Tests\obj\Debug\SeiShindoJujitsu_v1.Tests.dll
+D:\Development\OCG\SeiShindoJujitsu_v1\SeiShindoJujitsu_v1.Tests\obj\Debug\SeiShindoJujitsu_v1.Tests.pdb
