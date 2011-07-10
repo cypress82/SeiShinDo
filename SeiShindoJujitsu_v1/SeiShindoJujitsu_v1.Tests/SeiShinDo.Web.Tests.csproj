@@ -56,7 +56,7 @@
     <Content Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SeiShindoJujitsu_v1\SeiShindoJujitsu_v1.csproj">
+    <ProjectReference Include="..\SeiShindoJujitsu_v1\SeiShinDo.Web.csproj">
       <Project>{4DBAFF0F-2E79-411E-AC75-CA9C6A2ED93E}</Project>
       <Name>SeiShindoJujitsu_v1</Name>
     </ProjectReference>
