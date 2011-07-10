@@ -7,5 +7,6 @@ namespace SeiShinDo.Common
 {
     public class Components
     {
+        //test change
     }
 }

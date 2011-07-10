@@ -1,0 +1,6 @@
+D:\Development\OCG\SeiShinDo\SeiShindoJujitsu_v1\SeiShinDo.EntityFramework\bin\Debug\SeiShinDo.EntityFramework.dll.config
+D:\Development\OCG\SeiShinDo\SeiShindoJujitsu_v1\SeiShinDo.EntityFramework\bin\Debug\SeiShinDo.EntityFramework.dll
+D:\Development\OCG\SeiShinDo\SeiShindoJujitsu_v1\SeiShinDo.EntityFramework\bin\Debug\SeiShinDo.EntityFramework.pdb
+D:\Development\OCG\SeiShinDo\SeiShindoJujitsu_v1\SeiShinDo.EntityFramework\obj\Debug\ResolveAssemblyReference.cache
+D:\Development\OCG\SeiShinDo\SeiShindoJujitsu_v1\SeiShinDo.EntityFramework\obj\Debug\SeiShinDo.EntityFramework.dll
+D:\Development\OCG\SeiShinDo\SeiShindoJujitsu_v1\SeiShinDo.EntityFramework\obj\Debug\SeiShinDo.EntityFramework.pdb

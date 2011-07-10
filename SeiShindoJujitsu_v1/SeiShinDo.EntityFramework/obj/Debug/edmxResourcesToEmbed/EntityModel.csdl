@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SeiShinDoModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="SeiShinDoEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Contacts" EntityType="SeiShinDoModel.Contact" />
+    <EntitySet Name="EntityTypes" EntityType="SeiShinDoModel.EntityType" />
+    <EntitySet Name="Locations" EntityType="SeiShinDoModel.Location" />
+    <EntitySet Name="Messages" EntityType="SeiShinDoModel.Message" />
+    <EntitySet Name="UserProfiles" EntityType="SeiShinDoModel.UserProfile" />
+    <EntitySet Name="Users" EntityType="SeiShinDoModel.User" />
+    <AssociationSet Name="FK_Contact_Users" Association="SeiShinDoModel.FK_Contact_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Contact" EntitySet="Contacts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Blog_Type" Association="SeiShinDoModel.FK_Blog_Type">
+      <End Role="EntityType" EntitySet="EntityTypes" />
+      <End Role="Messages" EntitySet="Messages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Location_EntityType" Association="SeiShinDoModel.FK_Location_EntityType">
+      <End Role="EntityType" EntitySet="EntityTypes" />
+      <End Role="Location" EntitySet="Locations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Biography_Users" Association="SeiShinDoModel.FK_Biography_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="UserProfile" EntitySet="UserProfiles" />
+    </AssociationSet>
+    <FunctionImport Name="em_GetContactByID" ReturnType="Collection(SeiShinDoModel.em_GetContactByID_Result)">
+      <Parameter Name="ContactID" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <EntityType Name="Contact">
+    <Key>
+      <PropertyRef Name="ContactID" />
+    </Key>
+    <Property Name="ContactID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_UserID" Type="Int32" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="MiddleName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Suffix" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Address1" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Address2" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="City" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="State" Type="String" MaxLength="5" Unicode="true" FixedLength="false" />
+    <Property Name="Zip" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="Email" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" />
+    <Property Name="LastUpdated" Type="DateTime" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="User" Relationship="SeiShinDoModel.FK_Contact_Users" FromRole="Contact" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="EntityType">
+    <Key>
+      <PropertyRef Name="EntityTypeID" />
+    </Key>
+    <Property Name="EntityTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EntityTypeName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="EntityTypeDescription" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" />
+    <Property Name="LastUpdated" Type="DateTime" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Messages" Relationship="SeiShinDoModel.FK_Blog_Type" FromRole="EntityType" ToRole="Messages" />
+    <NavigationProperty Name="Locations" Relationship="SeiShinDoModel.FK_Location_EntityType" FromRole="EntityType" ToRole="Location" />
+  </EntityType>
+  <EntityType Name="Location">
+    <Key>
+      <PropertyRef Name="LocationID" />
+    </Key>
+    <Property Name="LocationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_EntityTypeID" Type="Int32" Nullable="false" />
+    <Property Name="LocationName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Address1" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Address2" Type="Binary" MaxLength="50" FixedLength="false" />
+    <Property Name="City" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="State" Type="String" MaxLength="5" Unicode="false" FixedLength="false" />
+    <Property Name="Zip" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="About" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="MonthlyFee" Type="Decimal" Precision="2" Scale="0" />
+    <Property Name="UniformFee" Type="Decimal" Precision="2" Scale="0" />
+    <NavigationProperty Name="EntityType" Relationship="SeiShinDoModel.FK_Location_EntityType" FromRole="Location" ToRole="EntityType" />
+  </EntityType>
+  <EntityType Name="Message">
+    <Key>
+      <PropertyRef Name="MessageID" />
+    </Key>
+    <Property Name="MessageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_EntityTypeID" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Subject" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+    <Property Name="MessageText" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" />
+    <Property Name="LastUpdated" Type="DateTime" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="EntityType" Relationship="SeiShinDoModel.FK_Blog_Type" FromRole="Messages" ToRole="EntityType" />
+  </EntityType>
+  <EntityType Name="UserProfile">
+    <Key>
+      <PropertyRef Name="UserProfileID" />
+    </Key>
+    <Property Name="UserProfileID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_UserID" Type="Int32" Nullable="false" />
+    <Property Name="UserProfileTitle" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+    <Property Name="UserProfileText" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" />
+    <Property Name="LastUpdate" Type="DateTime" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="User" Relationship="SeiShinDoModel.FK_Biography_Users" FromRole="UserProfile" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Password" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Email" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" />
+    <Property Name="LastUpdated" Type="DateTime" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Contacts" Relationship="SeiShinDoModel.FK_Contact_Users" FromRole="Users" ToRole="Contact" />
+    <NavigationProperty Name="UserProfiles" Relationship="SeiShinDoModel.FK_Biography_Users" FromRole="Users" ToRole="UserProfile" />
+  </EntityType>
+  <Association Name="FK_Contact_Users">
+    <End Role="Users" Type="SeiShinDoModel.User" Multiplicity="1" />
+    <End Role="Contact" Type="SeiShinDoModel.Contact" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Contact">
+        <PropertyRef Name="FK_UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Blog_Type">
+    <End Role="EntityType" Type="SeiShinDoModel.EntityType" Multiplicity="1" />
+    <End Role="Messages" Type="SeiShinDoModel.Message" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntityType">
+        <PropertyRef Name="EntityTypeID" />
+      </Principal>
+      <Dependent Role="Messages">
+        <PropertyRef Name="FK_EntityTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Location_EntityType">
+    <End Role="EntityType" Type="SeiShinDoModel.EntityType" Multiplicity="1" />
+    <End Role="Location" Type="SeiShinDoModel.Location" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntityType">
+        <PropertyRef Name="EntityTypeID" />
+      </Principal>
+      <Dependent Role="Location">
+        <PropertyRef Name="FK_EntityTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Biography_Users">
+    <End Role="Users" Type="SeiShinDoModel.User" Multiplicity="1" />
+    <End Role="UserProfile" Type="SeiShinDoModel.UserProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="UserProfile">
+        <PropertyRef Name="FK_UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="em_GetContactByID_Result">
+    <Property Type="Int32" Name="ContactID" Nullable="false" />
+    <Property Type="Int32" Name="FK_UserID" Nullable="false" />
+    <Property Type="String" Name="FirstName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LastName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="MiddleName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Suffix" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Address1" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Address2" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="City" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="State" Nullable="true" MaxLength="5" />
+    <Property Type="String" Name="Zip" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="CreateDate" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="LastUpdated" Nullable="true" Precision="23" />
+    <Property Type="String" Name="UpdatedBy" Nullable="true" MaxLength="50" />
+  </ComplexType>
+</Schema>

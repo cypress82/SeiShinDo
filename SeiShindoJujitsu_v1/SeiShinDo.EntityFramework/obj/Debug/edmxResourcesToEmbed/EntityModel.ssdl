@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SeiShinDoModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="SeiShinDoModelStoreContainer">
+    <EntitySet Name="Contact" EntityType="SeiShinDoModel.Store.Contact" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="EntityType" EntityType="SeiShinDoModel.Store.EntityType" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Location" EntityType="SeiShinDoModel.Store.Location" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Messages" EntityType="SeiShinDoModel.Store.Messages" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserProfile" EntityType="SeiShinDoModel.Store.UserProfile" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Users" EntityType="SeiShinDoModel.Store.Users" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_Biography_Users" Association="SeiShinDoModel.Store.FK_Biography_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="UserProfile" EntitySet="UserProfile" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Blog_Type" Association="SeiShinDoModel.Store.FK_Blog_Type">
+      <End Role="EntityType" EntitySet="EntityType" />
+      <End Role="Messages" EntitySet="Messages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Contact_Users" Association="SeiShinDoModel.Store.FK_Contact_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Contact" EntitySet="Contact" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Location_EntityType" Association="SeiShinDoModel.Store.FK_Location_EntityType">
+      <End Role="EntityType" EntitySet="EntityType" />
+      <End Role="Location" EntitySet="Location" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Contact">
+    <Key>
+      <PropertyRef Name="ContactID" />
+    </Key>
+    <Property Name="ContactID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="FK_UserID" Type="int" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+    <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Suffix" Type="nvarchar" MaxLength="50" />
+    <Property Name="Address1" Type="nvarchar" MaxLength="50" />
+    <Property Name="Address2" Type="nvarchar" MaxLength="50" />
+    <Property Name="City" Type="nvarchar" MaxLength="50" />
+    <Property Name="State" Type="nvarchar" MaxLength="5" />
+    <Property Name="Zip" Type="nvarchar" MaxLength="10" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="LastUpdated" Type="datetime" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="EntityType">
+    <Key>
+      <PropertyRef Name="EntityTypeID" />
+    </Key>
+    <Property Name="EntityTypeID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="EntityTypeName" Type="varchar" MaxLength="50" />
+    <Property Name="EntityTypeDescription" Type="varchar" MaxLength="50" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="LastUpdated" Type="datetime" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Location">
+    <Key>
+      <PropertyRef Name="LocationID" />
+    </Key>
+    <Property Name="LocationID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="FK_EntityTypeID" Type="int" Nullable="false" />
+    <Property Name="LocationName" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Address1" Type="varchar" MaxLength="50" />
+    <Property Name="Address2" Type="varbinary" MaxLength="50" />
+    <Property Name="City" Type="varchar" MaxLength="50" />
+    <Property Name="State" Type="varchar" MaxLength="5" />
+    <Property Name="Zip" Type="nvarchar" MaxLength="10" />
+    <Property Name="About" Type="nvarchar(max)" />
+    <Property Name="MonthlyFee" Type="decimal" Precision="2" />
+    <Property Name="UniformFee" Type="decimal" Precision="2" />
+  </EntityType>
+  <EntityType Name="Messages">
+    <Key>
+      <PropertyRef Name="MessageID" />
+    </Key>
+    <Property Name="MessageID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="FK_EntityTypeID" Type="int" Nullable="false" />
+    <Property Name="Title" Type="varchar" MaxLength="50" />
+    <Property Name="Subject" Type="varchar" MaxLength="150" />
+    <Property Name="MessageText" Type="varchar(max)" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="LastUpdated" Type="datetime" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="UserProfile">
+    <Key>
+      <PropertyRef Name="UserProfileID" />
+    </Key>
+    <Property Name="UserProfileID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="FK_UserID" Type="int" Nullable="false" />
+    <Property Name="UserProfileTitle" Type="nvarchar" MaxLength="250" />
+    <Property Name="UserProfileText" Type="varchar(max)" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="LastUpdated" Type="datetime" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_Biography_Users">
+    <End Role="Users" Type="SeiShinDoModel.Store.Users" Multiplicity="1" />
+    <End Role="UserProfile" Type="SeiShinDoModel.Store.UserProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="UserProfile">
+        <PropertyRef Name="FK_UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Blog_Type">
+    <End Role="EntityType" Type="SeiShinDoModel.Store.EntityType" Multiplicity="1" />
+    <End Role="Messages" Type="SeiShinDoModel.Store.Messages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntityType">
+        <PropertyRef Name="EntityTypeID" />
+      </Principal>
+      <Dependent Role="Messages">
+        <PropertyRef Name="FK_EntityTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Contact_Users">
+    <End Role="Users" Type="SeiShinDoModel.Store.Users" Multiplicity="1" />
+    <End Role="Contact" Type="SeiShinDoModel.Store.Contact" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Contact">
+        <PropertyRef Name="FK_UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Location_EntityType">
+    <End Role="EntityType" Type="SeiShinDoModel.Store.EntityType" Multiplicity="1" />
+    <End Role="Location" Type="SeiShinDoModel.Store.Location" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntityType">
+        <PropertyRef Name="EntityTypeID" />
+      </Principal>
+      <Dependent Role="Location">
+        <PropertyRef Name="FK_EntityTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="sp_GetContactByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ContactID" Type="int" Mode="In" />
+  </Function>
+</Schema>

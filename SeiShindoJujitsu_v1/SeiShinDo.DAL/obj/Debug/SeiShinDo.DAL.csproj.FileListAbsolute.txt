@@ -1,0 +1,9 @@
+D:\Development\OCG\SeiShinDo\SeiShindoJujitsu_v1\SeiShinDo.DAL\bin\Debug\SeiShinDo.DAL.dll
+D:\Development\OCG\SeiShinDo\SeiShindoJujitsu_v1\SeiShinDo.DAL\bin\Debug\SeiShinDo.DAL.pdb
+D:\Development\OCG\SeiShinDo\SeiShindoJujitsu_v1\SeiShinDo.DAL\bin\Debug\SeiShinDo.EntityFramework.dll
+D:\Development\OCG\SeiShinDo\SeiShindoJujitsu_v1\SeiShinDo.DAL\bin\Debug\SeiShinDoDTO.dll
+D:\Development\OCG\SeiShinDo\SeiShindoJujitsu_v1\SeiShinDo.DAL\bin\Debug\SeiShinDo.EntityFramework.pdb
+D:\Development\OCG\SeiShinDo\SeiShindoJujitsu_v1\SeiShinDo.DAL\bin\Debug\SeiShinDoDTO.pdb
+D:\Development\OCG\SeiShinDo\SeiShindoJujitsu_v1\SeiShinDo.DAL\obj\Debug\ResolveAssemblyReference.cache
+D:\Development\OCG\SeiShinDo\SeiShindoJujitsu_v1\SeiShinDo.DAL\obj\Debug\SeiShinDo.DAL.dll
+D:\Development\OCG\SeiShinDo\SeiShindoJujitsu_v1\SeiShinDo.DAL\obj\Debug\SeiShinDo.DAL.pdb
